@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Image, Item } from './ImageGalleryItem.styled';
 
 export const GalleryItem = ({
-  item: { webFormatURL, largeImageURL, tags },
+  item: { webformatURL, largeImageURL, tags },
   getItemClick,
 }) => {
   // Передача оригінального розміру зображення по кліку
@@ -12,14 +12,14 @@ export const GalleryItem = ({
 
   return (
     <Item>
-      <Image src={webFormatURL} alt={tags} onClick={onClickImage} />
+      <Image src={webformatURL} alt={tags} onClick={onClickImage} />
     </Item>
   );
 };
 
-GalleryItem.protoTypes = {
+GalleryItem.propTypes = {
   item: PropTypes.shape({
-    webFormatURL: PropTypes.string.isRequired,
+    webformatURL: PropTypes.string.isRequired,
     largeImageURL: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
   }).isRequired,

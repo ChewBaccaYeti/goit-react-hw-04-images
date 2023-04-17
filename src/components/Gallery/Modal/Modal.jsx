@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Modal, Overlay } from './Modal.syled';
+import { Modal, Overlay } from './Modal.styled';
 
 export class ModalOverlay extends Component {
   // Добавляє слухача натискання клавіши при монтуванні
