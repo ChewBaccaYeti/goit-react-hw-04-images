@@ -19,11 +19,18 @@ export class ModalOverlay extends Component {
     }
   };
 
+  // Закриває модалку по кліку
+  handleClick = e => {
+    if (e.target === e.currentTarget) {
+      this.props.onClick();
+    }
+  };
+
   render() {
     return (
       <Overlay onClick={this.handleClick}>
         <Modal>
-          <img src={this.props.largeImage} alt="" />
+          <img src={this.props.largeImageURL} alt="" />
         </Modal>
       </Overlay>
     );

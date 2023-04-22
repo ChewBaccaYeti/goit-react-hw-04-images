@@ -1,7 +1,10 @@
 const scrollOnLoad = () => {
   setTimeout(() => {
-    window.scrollTo(0, document.body.scrollHeight, { behavior: 'smooth' });
-  }, 1000);
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, 0);
 };
 
 export default scrollOnLoad;

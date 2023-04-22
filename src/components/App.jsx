@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
+import { Searchbar } from './Gallery/Searchbar/Searchbar';
 import { GlobalStyle } from './GlobalStyle/GlobalStyle';
 import { ImageGallery } from './Gallery/ImageGallery/ImageGallery';
-import { Loader } from './Gallery/Loader/Loader';
-import { LoadMore } from './Gallery/Button/Button';
-import { Container } from './App.styled';
-import { ModalOverlay } from './Gallery/Modal/Modal';
-import { Searchbar } from './Gallery/Searchbar/Searchbar';
-import scrollOnLoad from './Gallery/utils/scrollBtnLoad';
 import fetchImages from './Gallery/API/api';
+import { LoadMore } from './Gallery/Button/Button';
+import { Container } from 'components/App.styled';
+import { ModalOverlay } from './Gallery/Modal/Modal';
+import { Loader } from './Gallery/Loader/Loader';
+import scrollOnLoad from './Gallery/utils/scrollBtnLoad';
 
 export const App = () => {
   const [images, setImages] = useState([]);
