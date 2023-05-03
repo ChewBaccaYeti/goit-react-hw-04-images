@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Input, Label } from './Searchbar.styled';
 import { BsSearch } from 'react-icons/bs';
 
-export const SearchBar = ({ onSubmit }) => {
+export const Searchbar = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleChangeSearchQuery = ({ target: { value } }) => {
@@ -41,6 +41,6 @@ export const SearchBar = ({ onSubmit }) => {
   );
 };
 
-SearchBar.propTypes = {
+Searchbar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
