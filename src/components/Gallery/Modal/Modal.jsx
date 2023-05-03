@@ -1,38 +1,34 @@
-import { Component } from 'react';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Overlay } from './Modal.styled';
 
-export class ModalOverlay extends Component {
-  // Добавляє слухача натискання клавіши при монтуванні
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown);
-  }
+export const ModalOverlay = ({ onClick, largeImageURL }) => {
+  useEffect(() => {
+    const handleKeyDown = ({ code }) => {
+      if (code === 'Escape') onClick();
+    };
 
-  // Видаляємо слухача натискання клавіши (з window) при розмантуванні
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  }
+    window.addEventListener('keydown', handleKeyDown);
 
-  // Закриває модальне вікно при натисканні ESC
-  handleKeyDown = e => {
-    if (e.code === 'Escape') {
-      this.props.onClick();
-    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+
+  const handleClick = ({ target, currentTarget }) => {
+    if (target === currentTarget) onClick();
   };
 
-  // Закриває модалку по кліку
-  handleClick = e => {
-    if (e.target === e.currentTarget) {
-      this.props.onClick();
-    }
-  };
+  return (
+    <Overlay onClick={handleClick}>
+      <Modal>
+        <img src={largeImageURL} alt="images" />
+      </Modal>
+    </Overlay>
+  );
+};
 
-  render() {
-    return (
-      <Overlay onClick={this.handleClick}>
-        <Modal>
-          <img src={this.props.largeImageURL} alt="" />
-        </Modal>
-      </Overlay>
-    );
-  }
-}
+ModalOverlay.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+};
